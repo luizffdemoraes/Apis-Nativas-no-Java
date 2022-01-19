@@ -1,7 +1,10 @@
-package com.schoolofnet;
+package com.schoolofnet.app;
+
+import main.Main;
 
 public class App {
     public static void main(String[] args) {
+        new Main();
         System.out.println( "Hello World!" );
     }
 }
