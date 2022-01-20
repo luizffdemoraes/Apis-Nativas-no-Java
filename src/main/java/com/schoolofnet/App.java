@@ -2,8 +2,21 @@ package com.schoolofnet;
 
 import com.schoolofnet.public_code.Public;
 
+import java.lang.annotation.Annotation;
+
 public class App {
     public static void main(String[] args) {
+
+        Class<Public> obj = Public.class;
+
+        // Reflection
+       if (obj.isAnnotationPresent(Info.class)) {
+           Annotation annotation = obj.getAnnotation(Info.class);
+           Info info = (Info) annotation;
+
+           System.out.println(info.createdBy());
+       }
+
 
         // Classes Wrappers
         // Classes que tem a herança de Object
@@ -15,7 +28,7 @@ public class App {
 //      |  double          | Double         |
 //      |  float           | Float          |
 //      |  long            | Long           |
-        
+
         Integer one = 0;
 
         // existencia dos metodos objects
