@@ -1,21 +1,36 @@
 package com.schoolofnet;
 
-import com.schoolofnet.public_code.Public;
-
-import java.lang.annotation.Annotation;
+import java.io.File;
+import java.io.IOException;
 
 public class App {
     public static void main(String[] args) {
 
-        Class<Public> obj = Public.class;
 
-        // Reflection
-       if (obj.isAnnotationPresent(Info.class)) {
-           Annotation annotation = obj.getAnnotation(Info.class);
-           Info info = (Info) annotation;
 
-           System.out.println(info.createdBy());
-       }
+        try {
+            File file = new File("text.txt");
+
+            if(file.createNewFile()) {
+                System.out.println("File is created");
+            } else {
+                System.out.println("File already exists");
+            }
+        } catch(IOException ex) {
+            ex.printStackTrace();
+        }
+
+
+
+//        Class<Public> obj = Public.class;
+//
+//        // Reflection
+//       if (obj.isAnnotationPresent(Info.class)) {
+//           Annotation annotation = obj.getAnnotation(Info.class);
+//           Info info = (Info) annotation;
+//
+//           System.out.println(info.createdBy());
+//       }
 
 
         // Classes Wrappers
@@ -29,8 +44,7 @@ public class App {
 //      |  float           | Float          |
 //      |  long            | Long           |
 
-        Integer one = 0;
-
+//        Integer one = 0;Evolução
         // existencia dos metodos objects
 
         // Classe Object
