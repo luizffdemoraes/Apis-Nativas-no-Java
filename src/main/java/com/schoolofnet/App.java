@@ -1,25 +1,59 @@
 package com.schoolofnet;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class App {
     public static void main(String[] args) {
 
-
-
+        File file;
+        FileOutputStream fop = null;
         try {
-            File file = new File("text.txt");
+            file = new File("text.txt");
 
-            if(file.createNewFile()) {
+            if (file.createNewFile()) {
                 System.out.println("File is created");
             } else {
                 System.out.println("File already exists");
             }
-        } catch(IOException ex) {
+
+            fop = new FileOutputStream(file);
+
+            String text = "Hello. My name is Leonan and I'm working at School of net";
+
+            // Vetor com todos bytes dessa string
+            byte[] textBytes = text.getBytes();
+
+            // Escrever mensagem no arquivo .txt
+            fop.write(textBytes);
+            fop.flush();
+            fop.close();
+
+            System.out.println("Done");
+
+            // Caso ele não exista.
+            if (!file.exists()) {
+               file.createNewFile();
+            }
+
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
 
+
+        // Realizar o import ou a criação de arquivos
+//        try {
+//            File file = new File("text.txt");
+//
+//            if(file.createNewFile()) {
+//                System.out.println("File is created");
+//            } else {
+//                System.out.println("File already exists");
+//            }
+//        } catch(IOException ex) {
+//            ex.printStackTrace();
+//        }
 
 
 //        Class<Public> obj = Public.class;
