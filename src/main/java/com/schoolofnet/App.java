@@ -1,20 +1,29 @@
 package com.schoolofnet;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class App {
     public static void main(String[] args) {
+
+        Map<Integer, String> map = new HashMap<Integer, String>();
+        map.put(0, "Leonan");
+        map.put(1, "Luiz");
+        map.put(2, "Wesley");
+
+        System.out.println(map.toString());
+        System.out.println(map.values());
+        map.remove(0);
+
         // Recurso para estruturar dados lista dinâmicas
-        List<String> list = new ArrayList<String>();
-
-        list.add(0, "Leonan");
-        list.add(1, "Luiz");
-        list.add(2, "Wesley");
-
-        System.out.println(list.get(1));
-        System.out.println(list.remove(1));
+//        List<String> list = new ArrayList<String>();
+//
+//        list.add(0, "Leonan");
+//        list.add(1, "Luiz");
+//        list.add(2, "Wesley");
+//
+//        System.out.println(list.get(1));
+//        System.out.println(list.remove(1));
 
 //        File file;
 //        FileOutputStream fop = null;
