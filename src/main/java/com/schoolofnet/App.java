@@ -1,61 +1,72 @@
 package com.schoolofnet;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class App {
     public static void main(String[] args) {
+        // Recurso para estruturar dados lista dinâmicas
+        List<String> list = new ArrayList<String>();
 
-        File file;
-        FileOutputStream fop = null;
-        // Duas formas de realizar leitura nesse tipo de arquivo é pelo FileInputStream e BufferedReader
-        BufferedReader reader = null;
-        FileInputStream fileReader = null;
-        BufferedInputStream bis = null;
+        list.add(0, "Leonan");
+        list.add(1, "Luiz");
+        list.add(2, "Wesley");
 
-        try {
-            file = new File("test.txt");
+        System.out.println(list.get(1));
+        System.out.println(list.remove(1));
 
-            if (file.createNewFile()) {
-                System.out.println("File is created");
-            } else {
-                System.out.println("File already exists");
-            }
-
-            fop = new FileOutputStream(file);
-
-            String text = "Hello. My name is Leonan and I'm working at School of net";
-
-            // Vetor com todos bytes dessa string
-            byte[] textBytes = text.getBytes();
-
-            // Escrever mensagem no arquivo .txt
-            fop.write(textBytes);
-            fop.flush();
-            fop.close();
-
-            System.out.println("Done");
-            System.out.println("Preparing to read...");
-
-            fileReader = new FileInputStream(file);
-            bis = new BufferedInputStream(fileReader);
-            DataInputStream dis = new DataInputStream(bis);
-
-            while(dis.available() != 0) {
-                System.out.println(dis.readLine());
-            }
-
-            fileReader.close();
-            bis.close();
-            dis.close();
-
-            // Caso ele não exista.
-//            if (!file.exists()) {
-//                file.createNewFile();
+//        File file;
+//        FileOutputStream fop = null;
+//        // Duas formas de realizar leitura nesse tipo de arquivo é pelo FileInputStream e BufferedReader
+//        BufferedReader reader = null;
+//        FileInputStream fileReader = null;
+//        BufferedInputStream bis = null;
+//
+//        try {
+//            file = new File("test.txt");
+//
+//            if (file.createNewFile()) {
+//                System.out.println("File is created");
+//            } else {
+//                System.out.println("File already exists");
 //            }
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+//
+//            fop = new FileOutputStream(file);
+//
+//            String text = "Hello. My name is Leonan and I'm working at School of net";
+//
+//            // Vetor com todos bytes dessa string
+//            byte[] textBytes = text.getBytes();
+//
+//            // Escrever mensagem no arquivo .txt
+//            fop.write(textBytes);
+//            fop.flush();
+//            fop.close();
+//
+//            System.out.println("Done");
+//            System.out.println("Preparing to read...");
+//
+//            fileReader = new FileInputStream(file);
+//            bis = new BufferedInputStream(fileReader);
+//            DataInputStream dis = new DataInputStream(bis);
+//
+//            while (dis.available() != 0) {
+//                System.out.println(dis.readLine());
+//            }
+//
+//            fileReader.close();
+//            bis.close();
+//            dis.close();
+//
+//            // Caso ele não exista.
+////            if (!file.exists()) {
+////                file.createNewFile();
+////            }
+//
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        }
 
 
 //        try {
