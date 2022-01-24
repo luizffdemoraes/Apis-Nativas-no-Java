@@ -1,16 +1,19 @@
 package com.schoolofnet;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 public class App {
     public static void main(String[] args) {
 
         File file;
         FileOutputStream fop = null;
+        // Duas formas de realizar leitura nesse tipo de arquivo é pelo FileInputStream e BufferedReader
+        BufferedReader reader = null;
+        FileInputStream fileReader = null;
+        BufferedInputStream bis = null;
+
         try {
-            file = new File("text.txt");
+            file = new File("test.txt");
 
             if (file.createNewFile()) {
                 System.out.println("File is created");
@@ -31,15 +34,48 @@ public class App {
             fop.close();
 
             System.out.println("Done");
+            System.out.println("Preparing to read...");
+
+            fileReader = new FileInputStream(file);
+            bis = new BufferedInputStream(fileReader);
+            DataInputStream dis = new DataInputStream(bis);
+
+            while(dis.available() != 0) {
+                System.out.println(dis.readLine());
+            }
+
+            fileReader.close();
+            bis.close();
+            dis.close();
 
             // Caso ele não exista.
-            if (!file.exists()) {
-               file.createNewFile();
-            }
+//            if (!file.exists()) {
+//                file.createNewFile();
+//            }
 
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+
+
+//        try {
+//            String currentLine;
+//            // Realizar leitura do arquivo
+//            reader = new BufferedReader(new FileReader("test.txt"));
+//            fileReader = new FileInputStream(file);
+//
+//            //Exibiu mensagem do arquivo.
+//            while ((currentLine = reader.readLine()) != null) {
+//                System.out.println(currentLine);
+//            }
+//
+//            if (reader != null) {
+//                reader.close();
+//            }
+//
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        }
 
 
         // Realizar o import ou a criação de arquivos
